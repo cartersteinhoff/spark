@@ -4,10 +4,11 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-django = "*"
+django = {version = "*", extras = ["bcrypt"]}
 django-heroku = "*"
 gunicorn = "*"
 bcrypt = "*"
+"psycopg2-binary" = "*"
 
 [dev-packages]
 pylint = "*"

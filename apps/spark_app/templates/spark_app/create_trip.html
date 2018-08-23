@@ -1,0 +1,23 @@
+{% extends "spark_app/base.html" %}
+<!-- Content here -->
+{% block content %}
+<p><a href="/home">Home</a><a href="/logout" style="float: right;">Logout</a></p>
+<h1>Add a Trip</h1>
+<form action="/add" method="POST">
+    {% csrf_token %}
+    <label for="inputDestination" class="sr-only"></label>
+    <input type="text" name="destination" id="inputDestination" class="form-control" placeholder="Destination" required>
+    <br>
+    <label for="inputDescription" class="sr-only"></label>
+    <input type="text" name="description" id="inputDescription" class="form-control" placeholder="Description" required>
+    <br>
+    <label for="inputDate" class="sr-only"></label>
+    <input type="date" name="travel_date_from" id="inputDate" class="form-control" placeholder="Travel Date From" required>
+    <br>
+    <label for="inputDate" class="sr-only"></label>
+    <input type="date" name="travel_date_to" id="inputDate" class="form-control" placeholder="Travel Date To" required>
+    <br>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Add</button>
+    <br>
+</form>
+{%endblock%}
