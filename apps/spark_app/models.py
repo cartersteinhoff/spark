@@ -77,7 +77,7 @@ class User(models.Model):
 
 
 class TripManager(models.Manager):
-    def validate_trip(self, postData):
+    def create_trip(self, postData, user_id):
         response = {
             'status': False,
             'errors': []
@@ -89,9 +89,16 @@ class TripManager(models.Manager):
             description=postData['description'],
             travel_date_from=postData['travel_date_from'],
             travel_date_to=postData['travel_date_to'],
+            created_by=User.objects.get(id=user_id)
         )
 
         return response
+
+    def join_trip(self, trip_id, user_id):
+        user = User.objects.get(id=user_id)
+        trip = Trip.objects.get(id=trip_id)
+        trip.user_on_trip.add(user)
+        trip.save()
 
 
 class Trip(models.Model):

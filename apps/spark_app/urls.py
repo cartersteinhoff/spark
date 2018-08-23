@@ -9,7 +9,12 @@ urlpatterns = [
     path('process_login', views.process_login),
     path('register/', views.register),
     path('process_registration', views.process_registration),
+    # Dashboard
+    path('dashboard', views.dashboard),
     # Trips
-    # path('create_trip/', views.create_trip)
+    path('create_trip/', views.create_trip),
+    path('process_create_trip', views.process_create_trip),
+    path('join_trip/<int:post_id >', views.join_trip)
+
 
 ]

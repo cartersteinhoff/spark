@@ -39,7 +39,34 @@ def process_registration(request):
 def register(request):
     return render(request, 'spark_app/register.html')
 
+# Trips
 
-def create_trip_process(request):
-    new_trip = Trip.objects.validate_trip(request.POST)
-    return render(request, 'spark_app/dashboard.html')
+
+def create_trip(request):
+    return render(request, 'spark_app/create_trip.html')
+
+
+def process_create_trip(request):
+
+    new_trip = Trip.objects.create_trip(
+        request.POST, request.session['user_id'])
+
+    return redirect(dashboard)
+
+
+def join_trip(request, trip_id):
+
+    user_trip = Trip.objects.join(trip_id, request.session['user_id'])
+
+    return redirect(dashboard)
+
+
+# Dashboard
+
+def dashboard(request):
+
+    context = {
+        "all_trips":  Trip.objects.all(),
+        "user_trips": User.objects.get(id=request.session['user_id']).created_trips.all()
+    }
+    return render(request, 'spark_app/dashboard.html', context)

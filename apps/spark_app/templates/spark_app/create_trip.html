@@ -3,7 +3,7 @@
 {% block content %}
 <p><a href="/home">Home</a><a href="/logout" style="float: right;">Logout</a></p>
 <h1>Add a Trip</h1>
-<form action="/add" method="POST">
+<form action="/process_create_trip" method="POST">
     {% csrf_token %}
     <label for="inputDestination" class="sr-only"></label>
     <input type="text" name="destination" id="inputDestination" class="form-control" placeholder="Destination" required>

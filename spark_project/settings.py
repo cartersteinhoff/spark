@@ -59,7 +59,7 @@ WSGI_APPLICATION = 'spark_project.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": "travelify",
+        "NAME": "spark",
         "USER": "carter",
         "PASSWORD": "Bingo412",
         "HOST": "localhost",
