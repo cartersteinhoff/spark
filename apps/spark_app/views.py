@@ -15,8 +15,8 @@ def login(request):
 def process_login(request):
     pending_user = User.objects.validate_login(request.POST)
     if pending_user['status']:  # if user is logged in
-        request.session['user_id'] = pending_user
-        return redirect('/success')
+        request.session['user_id'] = pending_user['user_id']
+        return redirect(dashboard)
     else:
         for error in pending_user['errors']:
             messages.error(request, error)
@@ -28,7 +28,7 @@ def process_registration(request):
     pending_user = User.objects.validate_registration(request.POST)
     if pending_user['status']:  # if user is logged in
         request.session['user_id'] = pending_user['user_id']
-        return render(request, 'spark_app/success.html')
+        return redirect(dashboard)
     else:
         for error in pending_user['errors']:
             messages.error(request, error)
