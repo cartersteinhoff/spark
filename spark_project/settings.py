@@ -17,7 +17,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'Bingo412'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-ALLOWED_HOSTS = ['0.0.0.0', 'localhost', 'travelify-website.herokuapp.com']
+ALLOWED_HOSTS = ['0.0.0.0', 'localhost', 'spark-website.herokuapp.com']
 # Application definition
 INSTALLED_APPS = [
     'apps.spark_app',
