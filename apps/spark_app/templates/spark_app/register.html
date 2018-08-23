@@ -1,28 +1,35 @@
 {% extends 'spark_app/base.html' %} {% block content %}
 <div class="register-form-component">
-    <form action="/process_register" method="POST">
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <form action="/process_registration" method="POST" class="form-signin">
         {% csrf_token %}
-        <img class="mb-4" style="text-align:center;" src="/static/travel_app/images/around.svg" alt="" width="72" height="72">
-        <h1 class="form-header h3 mb-3 font-weight-normal">Travelify</h1>
-
-        <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+        <h1 class="h3 mb-3 font-weight-normal">Please Register Here</h1>
+        <label for="inputFirstName" class="sr-only">First Name</label>
+        <input type="name" name="first_name" id="inputFirstName" class="form-control" placeholder="First Name" required autofocus>
         <br>
-
+        <label for="inputLastName" class="sr-only">Last Name</label>
+        <input type="name" name="last_name" id="inputLastName" class="form-control" placeholder="Last Name" required autofocus>
+        <br>
         <label for="inputEmail" class="sr-only">Email address</label>
         <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
         <br>
         <label for="inputPassword" class="sr-only">Password</label>
         <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" name="remember_me" value="1"> Remember me
-            </label>
-        </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+
         <br>
-        <a href="/registration">Not Registered yet?</a>
-        <!-- <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p> -->
+        <label for="inputPassword" class="sr-only">Confirm Password</label>
+        <input type="password" name="confirm_password" id="inputPassword" class="form-control" placeholder="Confirm Password" required>
+
+        <br>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+        <br>
+        <a href="/">Needs To Register?</a>
     </form>
 </div>
 
