@@ -5,8 +5,12 @@ from .models import User, Trip
 
 
 def index(request):
-    all_trips = Trip.objects.all()
-    return render(request, 'spark_app/index.html')
+
+    context = {
+        'all_trips': Trip.objects.all()
+    }
+
+    return render(request, 'spark_app/index.html', context)
 
 
 def login(request):

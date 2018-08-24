@@ -12,7 +12,7 @@
         </tr>
     </thead>
     <tbody>
-        {% for trip in user_trips %}
+        {% for trip in all_trips %}
         <tr>
             <td>{{ trip.created_by.first_name }} {{ trip.created_by.last_name }}</td>
             <td><a href="/details/{{trip.id}}">{{trip.destination}}</a></td>
