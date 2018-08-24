@@ -5,11 +5,17 @@ from .models import User, Trip
 
 
 def index(request):
+    all_trips = Trip.objects.all()
     return render(request, 'spark_app/index.html')
 
 
 def login(request):
     return render(request, 'spark_app/login.html')
+
+
+def logout(request):
+    del request.session['user_id']
+    return redirect(index)
 
 
 def process_login(request):
