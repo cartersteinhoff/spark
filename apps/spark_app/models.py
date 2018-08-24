@@ -35,11 +35,10 @@ class UserManager(models.Manager):
                 first_name=postData['first_name'],
                 last_name=postData['last_name'],
                 email=postData['email'],
-                password=postData['password'],
-                # password=bcrypt.hashpw(
-                #     postData['password'].encode('utf-8'), bcrypt.gensalt())
+                # password=postData['password'],
+                password=bcrypt.hashpw(
+                    postData['password'].encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
             ).id
-        print(response)
         return response
 
     def validate_login(self, postData):
@@ -49,15 +48,21 @@ class UserManager(models.Manager):
         }
         # See if email already exists
         existing_user = User.objects.filter(email=postData['email'])
+        print(existing_user)
         if len(existing_user) == 0:
             print('errors')
             response['errors'].append("invalid input")
-        if postData['password'] == existing_user[0].password:
+        # if postData['password'] == existing_user[0].password:
             # Compare Form Input Password to DB
-            # if bcrypt.checkpw(postData['password'].encode('utf-8'), existing_user[0].password.encode('utf-8')):
+        print(existing_user[0])
+        print(type(postData['password'].encode('utf-8')),
+              postData['password'].encode('utf-8'))
+        print(type(existing_user[0].password), existing_user[0].password)
+
+        if bcrypt.checkpw(postData['password'].encode('utf-8'), existing_user[0].password.encode('utf-8')):
             response['status'] = True
             response['user_id'] = existing_user[0].id
-            print('works')
+            print(postData['password'])
         else:
             print("invalid input")
         return response

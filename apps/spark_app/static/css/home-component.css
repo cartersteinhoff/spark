@@ -6,3 +6,16 @@
   background-attachment: fixed;
   height: 400px;
 }
+.home-component table {
+  width: 700px;
+  margin: 0 auto;
+  margin-top: 0px;
+  background: grey;
+  margin-top: 200px;
+}
+.home-component .login-buttons {
+  color: #c3b49e;
+  margin: 0 auto;
+  width: 200px;
+  padding-top: 50px;
+}
