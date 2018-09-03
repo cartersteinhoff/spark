@@ -2,6 +2,25 @@
 from django.shortcuts import render, HttpResponse, redirect
 from django.contrib import messages
 from .models import User, Trip
+from django.http import JsonResponse
+
+
+def json_payload(response):
+    data = list(Trip.objects.values())
+    data_new = Trip.objects.all()
+    carter = {
+        'name': '',
+        'age': '',
+        'zip': '',
+    }
+
+    for key in carter:
+        print(key)
+        carter[key] = 1
+    print(carter)
+    # for item in carter:
+    #     print(item.destination)
+    return JsonResponse(carter, safe=False)
 
 
 def index(request):

@@ -16,7 +16,9 @@ urlpatterns = [
     # Trips
     path('create_trip/', views.create_trip),
     path('process_create_trip', views.process_create_trip),
-    path('join_trip/<int:post_id >', views.join_trip)
+    path('join_trip/<int:post_id >', views.join_trip),
+    # Google Maps API Json Payload
+    path('json_payload/', views.json_payload)
 
 
 ]

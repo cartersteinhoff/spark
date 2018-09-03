@@ -37,7 +37,7 @@ class UserManager(models.Manager):
                 email=postData['email'],
                 # password=postData['password'],
                 password=bcrypt.hashpw(
-                    postData['password'].encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
+                    postData['password'].encode('utf-8'), bcrypt.gensalt()).deçcode('utf-8')
             ).id
         return response
 
